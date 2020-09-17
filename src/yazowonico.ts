@@ -1,4 +1,5 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo';
+import { join } from 'path';
 
 declare module 'discord-akairo' {
   interface AkairoClient {
@@ -21,14 +22,14 @@ class YazowoNicowo extends AkairoClient {
     );
 
     this.config = config;
-
     this.commandHandler = new CommandHandler(this, {
-      directory: './commands/',
+      directory: join(__dirname, 'commands/'),
       prefix: this.config.prefix ? this.config.prefix : 'nico!',
+      allowMention: true,
     });
 
     this.listenerHandler = new ListenerHandler(this, {
-      directory: './listeners/',
+      directory: join(__dirname, 'listeners/'),
     });
 
     /*
@@ -37,7 +38,22 @@ class YazowoNicowo extends AkairoClient {
     });
     */
   }
+
+  private async _init() {
+    this.commandHandler.useListenerHandler(this.listenerHandler);
+    this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
+
+    this.listenerHandler.setEmitters({
+      commandHandler: this.commandHandler,
+      listenerHandler: this.listenerHandler,
+    });
+
+    this.commandHandler.loadAll();
+    this.listenerHandler.loadAll();
+  }
+
   async login(token: string): Promise<string> {
+    await this._init();
     return super.login(token);
   }
 }

@@ -13,8 +13,11 @@ class EmojiCommand extends Command {
 
   *args() {
     const method = yield {
-      type: [['emoji-add', 'add']],
-      otherwise: `\`no dummy\``,
+      type: [
+        ['emoji-add', 'add'],
+        ['emoji-delete', 'delete'],
+      ],
+      otherwise: `\`giv a pwoper subcommand\``,
     };
 
     return Flag.continue(method);

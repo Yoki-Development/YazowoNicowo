@@ -7,7 +7,12 @@ class PlayCommand extends Command {
     super('play', {
       aliases: ['play'],
       userPermissions: (message) => {
-        if (!message.member?.roles.cache.some((role) => role.name === 'play')) {
+        if (
+          (message.client as YazowoNicowo).config.notifyRole &&
+          !message.member?.roles.cache.has(
+            (message.client as YazowoNicowo).config.notifyRole
+          )
+        ) {
           return 'play';
         }
         return null;

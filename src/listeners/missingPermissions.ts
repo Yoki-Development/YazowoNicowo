@@ -13,7 +13,7 @@ class missingPermissions extends Listener {
 
   async exec(
     message: Message,
-    command: Command,
+    _command: Command,
     type: 'client' | 'user',
     missing: any[]
   ) {
@@ -27,9 +27,11 @@ class missingPermissions extends Listener {
         .setTitle('You are missing permissions!')
         .setColor('RED')
         .setDescription(
-          `You are missing the following permissions: ${missing
-            .map((x: string) => `\`${x}\``)
-            .join(', ')}`
+          `You are missing the following permissions: ${
+            missing instanceof Array && missing.length > 0
+              ? missing.map((x: string) => `\`${x}\``).join(', ')
+              : 'NONE'
+          }`
         )
     );
   }
@@ -40,9 +42,11 @@ class missingPermissions extends Listener {
         .setTitle('I am missing permissions!')
         .setColor('RED')
         .setDescription(
-          `I am missing the following permissions: ${missing
-            .map((x: string) => `\`${x}\``)
-            .join(', ')}`
+          `I am missing the following permissions: ${
+            missing instanceof Array && missing.length > 0
+              ? missing.map((x: string) => `\`${x}\``).join(', ')
+              : 'NONE'
+          }`
         )
     );
   }
