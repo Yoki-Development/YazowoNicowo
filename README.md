@@ -14,4 +14,4 @@ in an `.env` file put the following:
 
 ## LICENSING
 
-Licensed under the [MIT LICENSE] (https://github.com/zaida04/YazowoNicowo/blob/master/LICENSE)
+Licensed under the [MIT LICENSE](https://github.com/zaida04/YazowoNicowo/blob/master/LICENSE)
