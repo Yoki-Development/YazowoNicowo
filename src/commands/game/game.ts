@@ -15,7 +15,9 @@ class GameCommand extends Command {
     const method = yield {
       type: [
         ['game-notify', 'notify'],
-        ['game-play', 'play'],
+        [ 'game-play', 'play' ],
+        [ 'game-mute', 'mute' ],
+        ['game-ingame', 'ingame']
       ],
       otherwise: `\`giv a pwoper subcommand\``,
     };

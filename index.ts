@@ -10,6 +10,7 @@ config();
 const options: any = {
   notifyRole: process.env.NOTIFYROLE,
   prefix: process.env.PREFIX,
+  mutedPeople: []
 };
 const client = new YazowoNicowo(options);
 
