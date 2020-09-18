@@ -10,7 +10,7 @@ class PlayCommand extends Command {
           this.client.config.notifyRole &&
           !message.member?.roles.cache.has(this.client.config.notifyRole)
         ) {
-          return 'play';
+          return 'notify role';
         }
         return null;
       },

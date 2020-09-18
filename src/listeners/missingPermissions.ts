@@ -30,7 +30,7 @@ class missingPermissions extends Listener {
           `You are missing the following permissions: ${
             missing instanceof Array && missing.length > 0
               ? missing.map((x: string) => `\`${x}\``).join(', ')
-              : 'NONE'
+              : `\`${missing}\``
           }`
         )
     );
