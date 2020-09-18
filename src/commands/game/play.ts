@@ -1,17 +1,14 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
-import YazowoNicowo from '../yazowonico';
+import YazowoNicowo from '../../yazowonico';
 
 class PlayCommand extends Command {
   constructor() {
-    super('play', {
-      aliases: ['play'],
+    super('game-play', {
       userPermissions: (message) => {
         if (
-          (message.client as YazowoNicowo).config.notifyRole &&
-          !message.member?.roles.cache.has(
-            (message.client as YazowoNicowo).config.notifyRole
-          )
+          this.client.config.notifyRole &&
+          !message.member?.roles.cache.has(this.client.config.notifyRole)
         ) {
           return 'play';
         }
