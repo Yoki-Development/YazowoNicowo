@@ -1,0 +1,25 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 11
+    },
+    "extends": [
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "linebreak-style": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "prefer-template": "warn",
+        "camelcase": "off"
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.js",
+                "*.ts"
+            ]
+        }
+    ]
+}

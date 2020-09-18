@@ -1,6 +1,5 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
-import YazowoNicowo from '../../yazowonico';
 
 class PlayCommand extends Command {
   constructor() {
