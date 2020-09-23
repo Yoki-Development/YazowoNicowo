@@ -19,9 +19,9 @@ class PlayCommand extends Command {
     });
   }
   async exec(message: Message) {
-    const notifyRole = (message.client as YazowoNicowo).config.notifyRole
+    const notifyRole = this.client.config.notifyRole
       ? await message.guild?.roles.fetch(
-          (message.client as YazowoNicowo).config.notifyRole
+          this.client.config.notifyRole
         )
       : null;
 
