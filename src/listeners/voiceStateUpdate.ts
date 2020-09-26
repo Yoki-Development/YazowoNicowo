@@ -14,8 +14,12 @@ class ReadyListener extends Listener {
     if ( channel ) {
       if ( oldState.member?.hasPermission( "MUTE_MEMBERS" ) ) {
         if (!oldState.serverMute && newState.serverMute) {
+          let count = 0;
           for (const member of channel.members.values()) {
-            await member.voice.setMute(true);
+            setTimeout(async () => {
+              await member.voice.setMute(true);
+              count++;
+            }, 500 * count);
           }
           return;
         }
