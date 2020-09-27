@@ -2,7 +2,7 @@
 Created around 9-17-2020
 ### A play on the anime character "Yazawa Nico"
 
-A personal bot/boilerplate for my discord-akairo bots.
+A personal bot for enforcing "Among Us" vc rules
 
 ## CONFIG
 
