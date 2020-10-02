@@ -1,16 +1,10 @@
-//fancy seeing you here, you come here often?
-//red sus
-//vote dd first
-//i did medbay scan in front of you i swear bro
-
-import YazowoNicowo from './src/yazowonico';
+import YazowoNicowo from './yazowonico';
 import { config } from 'dotenv';
 config();
 
 const options: any = {
   notifyRole: process.env.NOTIFYROLE,
   prefix: process.env.PREFIX,
-  mutedPeople: []
 };
 const client = new YazowoNicowo(options);
 

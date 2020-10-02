@@ -1,6 +1,6 @@
 import { Listener } from 'discord-akairo';
 
-class ReadyListener extends Listener {
+export default class ReadyListener extends Listener {
   constructor() {
     super('ready', {
       emitter: 'client',
@@ -9,9 +9,8 @@ class ReadyListener extends Listener {
   }
 
   exec() {
-    console.log(`logged in as ${this.client.user?.tag}`);
-    if (!this.client.user) return;
-    this.client.user.setPresence({
+    console.log(`logged in as ${this.client.user!.tag}`);
+    this.client.user!.setPresence({
       status: 'dnd',
       activity: {
         name: `Among Us`,
@@ -20,5 +19,3 @@ class ReadyListener extends Listener {
     });
   }
 }
-
-export default ReadyListener;

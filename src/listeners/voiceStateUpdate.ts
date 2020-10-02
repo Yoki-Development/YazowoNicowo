@@ -1,37 +1,45 @@
 import { Listener } from 'discord-akairo';
 import { VoiceState } from 'discord.js';
 
-class ReadyListener extends Listener {
+export default class voiceStateUpdateListener extends Listener {
   constructor() {
     super('voiceStateUpdate', {
       emitter: 'client',
       event: 'voiceStateUpdate',
-    });
+    }); 
   }
+ 
+  async exec(oldState: VoiceState, newState: VoiceState) {
+    if (this.client.mutedCache.has(oldState.guild.id)) return;
+    if (!oldState.member || !newState.member) return;
+    if (!oldState.member.hasPermission("MUTE_MEMBERS")) return;
 
-  async exec( oldState: VoiceState, newState: VoiceState ) {
-    const channel = oldState.channel;
-    if ( channel ) {
-      if ( oldState.member?.hasPermission( "MUTE_MEMBERS" ) ) {
-        if (!oldState.serverMute && newState.serverMute) {
-          let count = 0;
-          for (const member of channel.members.values()) {
-            setTimeout(async () => {
-              await member.voice.setMute(true);
-              count++;
-            }, 500 * count);
-          }
-          return;
-        }
-        if (oldState.serverMute && !newState.serverMute) {
-          for (const member of channel.members.values()) {
-            await member.voice.setMute(false);
-          }
-          return;
-        }
+    if (!oldState.channel || !newState.channel) return;
+
+    if (!oldState.serverMute && newState.serverMute) {
+      const members = Array.from(newState.channel!.members.values());
+      for (let i = 0; i < members.length; i++) {
+        setTimeout(async () => {
+          await members[ i ].voice.setMute(true);
+        }, 250)
       }
+      this.client.mutedCache.add(newState.guild.id);
+      setTimeout(() => {
+        this.client.mutedCache.delete(newState.guild.id);
+      }, 7000);
+    }
+
+    if (oldState.serverMute && !newState.serverMute) {
+      const members = Array.from(newState.channel!.members.values());
+      for (let i = 0; i < members.length; i++) {
+        setTimeout(async () => {
+          await members[ i ].voice.setMute(false);
+        }, 250)
+      }
+      this.client.mutedCache.add(newState.guild.id);
+      setTimeout(() => {
+        this.client.mutedCache.delete(newState.guild.id);
+      }, 7000);
     }
   }
 }
-
-export default ReadyListener;

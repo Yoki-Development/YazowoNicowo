@@ -3,7 +3,7 @@ import { Listener } from 'discord-akairo';
 import { MessageEmbed } from 'discord.js';
 import { Message } from 'discord.js';
 
-class missingPermissions extends Listener {
+export default class missingPermissions extends Listener {
   constructor() {
     super('missingPermissions', {
       emitter: 'commandHandler',
@@ -51,5 +51,3 @@ class missingPermissions extends Listener {
     );
   }
 }
-
-export default missingPermissions;

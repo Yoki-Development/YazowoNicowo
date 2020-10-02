@@ -7,6 +7,7 @@ declare module 'discord-akairo' {
     listenerHandler: ListenerHandler;
     inhibitorHandler: InhibitorHandler;
     config: Record<any, any>;
+    mutedCache: Set<string>;
   }
 }
 
@@ -22,6 +23,7 @@ class YazowoNicowo extends AkairoClient {
     );
 
     this.config = config;
+    this.mutedCache = new Set();
     this.commandHandler = new CommandHandler(this, {
       directory: join(__dirname, 'commands/'),
       prefix: this.config.prefix ? this.config.prefix : 'nico!',

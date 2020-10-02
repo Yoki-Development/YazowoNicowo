@@ -12,11 +12,8 @@
     "strict": true,
     "strictNullChecks": true,
     "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
     "noImplicitAny": true,
     "resolveJsonModule": true,
-    "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -32,6 +29,7 @@
     "knexfile.ts"
   ],
   "exclude": [
-    "node_modules/**"
+    "node_modules/**",
+    "dist/**"
   ]
 }
