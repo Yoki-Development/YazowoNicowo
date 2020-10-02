@@ -17,7 +17,7 @@ export default class voiceStateUpdateListener extends Listener {
     if (!oldState.channel || !newState.channel) return;
 
     if (!oldState.serverMute && newState.serverMute) {
-      const members = Array.from(newState.channel!.members.values());
+      const members = Array.from(newState.channel!.members.values()).filter(x => x.id !== oldState.member!.id);
       for (let i = 0; i < members.length; i++) {
         setTimeout(async () => {
           await members[ i ].voice.setMute(true);
@@ -30,7 +30,7 @@ export default class voiceStateUpdateListener extends Listener {
     }
 
     if (oldState.serverMute && !newState.serverMute) {
-      const members = Array.from(newState.channel!.members.values());
+      const members = Array.from(newState.channel!.members.values()).filter(x => x.id !== oldState.member!.id);
       for (let i = 0; i < members.length; i++) {
         setTimeout(async () => {
           await members[ i ].voice.setMute(false);
