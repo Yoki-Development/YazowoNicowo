@@ -39,7 +39,7 @@ export default class voiceStateUpdateListener extends Listener {
       this.client.mutedCache.add(newState.guild.id);
       setTimeout(() => {
         this.client.mutedCache.delete(newState.guild.id);
-      }, 7000);
+      }, 5000);
     }
   }
 }

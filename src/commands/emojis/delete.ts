@@ -17,7 +17,7 @@ class EmojiDeleteCommand extends Command {
 
   async exec(message: Message, { emote }: { emote: GuildEmoji }) {
     if (!emote) return message.channel.send('Say the emote you dummy');
-    await message.guild?.emojis.resolve(emote)?.delete();
+    await message.guild!.emojis.resolve(emote)?.delete();
     return message.channel.send(`Deleted the emote: \`${emote.name}\``);
   }
 }
