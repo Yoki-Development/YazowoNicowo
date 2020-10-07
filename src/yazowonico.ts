@@ -1,15 +1,7 @@
 import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo';
 import { join } from 'path';
 
-declare module 'discord-akairo' {
-  interface AkairoClient {
-    commandHandler: CommandHandler;
-    listenerHandler: ListenerHandler;
-    inhibitorHandler: InhibitorHandler;
-    config: Record<any, any>;
-    mutedCache: Set<string>;
-  }
-}
+import "./typings";
 
 class YazowoNicowo extends AkairoClient {
   constructor(config: Record<any, string>) {
@@ -41,7 +33,7 @@ class YazowoNicowo extends AkairoClient {
     */
   }
 
-  private async _init() {
+  private _init() {
     this.commandHandler.useListenerHandler(this.listenerHandler);
     this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
 
@@ -55,7 +47,7 @@ class YazowoNicowo extends AkairoClient {
   }
 
   async login(token: string): Promise<string> {
-    await this._init();
+    this._init();
     return super.login(token);
   }
 }
