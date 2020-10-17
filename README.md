@@ -2,7 +2,7 @@
 
 
 # YazowoNicowo
-An Akairo based TS bot used for enforcing mute rules in "Among Us". Easy to use, with minimal need to exit the game.
+A Discord bot for enforcing mute rules in "Among Us". Lower the need to exit the game for everyone.
 
 ### Usage
 A member with `MUTE_MEMBERS` permissions in a voice channel server-mutes themselves, which will trigger a reaction of server muting everyone in the voice channel with a 250ms delay, with a 7 second cooldown between being able to unmute everyone.
