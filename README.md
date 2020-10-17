@@ -1,4 +1,4 @@
-<img src="static/yoki-readme.png" alt="Yoki Face" width='350' align="right">
+<img src="static/yazowonicowo.jpg" alt="YazowoNicowo Face" width='350' align="right">
 
 
 # YazowoNicowo
