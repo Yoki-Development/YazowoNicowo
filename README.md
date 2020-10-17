@@ -1,4 +1,4 @@
-<img src="static/yazowonicowo.jpg" alt="YazowoNicowo Face" width='150' align="right">
+<img src="static/readme.jpg" alt="YazowoNicowo Face" width='150' align="right">
 
 
 # YazowoNicowo
